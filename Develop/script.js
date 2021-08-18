@@ -1,6 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var pwArray = []
+var pwArrayShuffled = []
 var setLower = ''
 var setUpper = ''
 var setNumber = ''
@@ -14,7 +15,7 @@ function writePassword() {
   console.log(setNumber)
   console.log(setSpecial)
   console.log(pwLength)
-  console.log(JSON.stringify(pwArray,null," "))
+  console.log(JSON.stringify(pwArray,null,""))
 
 
   //var password = generatePassword();
@@ -109,9 +110,31 @@ for (var i = 0; i < pwLength; ) {
   }
 }
 console.log(JSON.stringify(pwArray,null," "))
+console.log(pwArray.join(""))
+
+function shuffle(array) {
+  var currentIndex = array.length,  randomIndex;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+  return array;
+}
+
+
+pwArrayShuffled = shuffle(pwArray)
+console.log(JSON.stringify(pwArrayShuffled,null," "))
 
 //set password to DOM
-passwordText.innerText = (JSON.stringify(pwArray,null," "))
+passwordText.innerText = pwArrayShuffled.join("")
 
 //passwordText.value = password;
 setLower = ''
@@ -119,7 +142,8 @@ setUpper = ''
 setNumber = ''
 setSpecial =''
 pwLength = ''
-pwArray = ''
+pwArray = []
+pwArrayShuffled = []
 console.log(setLower, setUpper, setNumber, setSpecial, pwLength, JSON.stringify(pwArray,null," "))
 }
 
