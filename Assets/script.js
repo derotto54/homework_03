@@ -92,6 +92,8 @@ function writePassword() {
     if (setSpecial) { 
       genPw(chars, 22, 0)
       i++
+    } else {
+      i++
     }
   }
 
